@@ -1,0 +1,96 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-{{ GTM_ID }}');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="utf-8">
+    <title>{{ SITE_NAME }}{% if page_title %} - {{ page_title }}{% endif %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="{{ OG_DESCRIPTION }}">
+    <meta name="theme-color" content="#0f1317" />
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}" sizes="64x64" />
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon-128.png' %}" sizes="128x128" />
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon-192.png' %}" sizes="192x192" />
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon-256.png' %}" sizes="256x256" />
+    <link rel="apple-touch-icon" href="{% static 'images/icons/favicon-128.png' %}" sizes="128x128">
+    <link rel="apple-touch-icon" href="{% static 'images/icons/favicon-192.png' %}" sizes="192x192">
+    <link rel="apple-touch-icon" href="{% static 'images/icons/favicon-256.png' %}" sizes="256x256">
+    <link rel="shortcut icon" href="{% static 'images/icons/favicon-128.png' %}" sizes="128x128" >
+    <link rel="shortcut icon" href="{% static 'images/icons/favicon-192.png' %}" sizes="192x192" >
+
+    <link rel="stylesheet" href="{% static 'css/default.css' %}?v1" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+    <!-- Use Vue.js? -->
+    <script src="https://unpkg.com/vue"></script>
+
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+
+    {% block opengraph %}
+    <meta property="og:url" content="http://{{ request.META.HTTP_HOST }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ SITE_NAME }}" />
+    <meta property="og:description" content="{{ OG_DESCRIPTION }}" />
+    <meta property="og:image" content="http://{{ request.META.HTTP_HOST }}/static/og_logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="fb:app_id" content="{{ FACEBOOK_APP_ID }}" />
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="">
+    <meta property="twitter:title" content="{{ SITE_NAME }}">
+    <meta property="twitter:description" content="{{ OG_DESCRIPTION }}">
+    <meta property="twitter:image" content="http://{{ request.META.HTTP_HOST }}/static/og_logo.png">
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}
+
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-{{ GTM_ID }}"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId={{ FACEBOOK_APP_ID }}";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+{% block js_body %}
+{% endblock %}
+
+<div id="main_app">
+    <!-- [[ debug_message ]] -->
+    {% block content %}
+    {% endblock content %}
+</div>
+
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/main_vue_setup.js' %}"></script>
+
+{% block js_footer %}
+{% endblock %}
+
+</body>
+</html>

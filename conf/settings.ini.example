@@ -1,0 +1,17 @@
+[settings]
+SITE_NAME=<Your site name here>
+ADMIN_TITLE=<Your site admin title here>
+SITE_URL=<Your site URL here>
+
+SECRET_KEY=<secret key>
+DEBUG=True
+DATABASE_URL=<database url, eg: qlite://./conf/db.sqlite3>
+EMAIL_BACKEND=django.core.mail.backends.filebased.EmailBackend
+
+OG_DESCRIPTION=<Your OpenGraph description here>
+GTM_ID=<google tag manager id>
+TW_CONSUMER_KEY=<twitter app key>
+TW_CONSUMER_SECRET=<twitter app secrect>
+TW_TOKEN=<twitter token>
+TW_TOKEN_SECRET=<twitter secret>
+FACEBOOK_APP_ID=<facebook app ai>
